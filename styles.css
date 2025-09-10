@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* --- Estilos generales para toda la página --- */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -6,34 +6,52 @@ body {
     box-sizing: border-box;
 }
 
+/* --- Estilos del encabezado de la página --- */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #e90707;  /* Color rojo */
-    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    border-bottom: 1px solid #000; 
     position: relative;
 }
 
+/* --- Estilos del logo --- */
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #000;
+    color: #e90707; 
 }
 
+/* --- Estilos del menú de navegación --- */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: none; 
+    flex-direction: column;
+    gap: 1rem;
+    background: #f0f0f0;
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border: 1px solid #000; 
 }
 
-/* Ocultar el menú de navegación en móvil */
-nav ul {
+
+#menu-toggle {
     display: none;
 }
 
-/* Menú hamburguesa */
+
+#menu-toggle:checked + .menu-hamburguesa + ul {
+    display: flex;
+}
+
+/* --- Estilos del menú hamburguesa -- */
 .menu-hamburguesa {
     display: block;
     cursor: pointer;
@@ -41,10 +59,14 @@ nav ul {
     line-height: 1;
 }
 
+/* --- Estilos de la sección principal "Hero" (banner) --- */
 .hero {
+    display: none; 
     background-color: #f0f0f0;
     padding: 4rem 1rem;
     text-align: center;
+    border: 1px solid #000; 
+    margin-top: 1rem;
 }
 
 .hero h1 {
@@ -52,6 +74,7 @@ nav ul {
     font-weight: normal;
 }
 
+/* --- Estilos de la sección de productos --- */
 .productos {
     padding: 2rem 1rem;
 }
@@ -62,8 +85,9 @@ nav ul {
     gap: 1rem;
 }
 
+/* --- Estilos de cada producto individual --- */
 .producto {
-    border: 1px solid #ccc;
+    border: 1px solid #000; 
     padding: 1rem;
     text-align: center;
 }
@@ -71,7 +95,7 @@ nav ul {
 .producto img {
     width: 100%;
     height: auto;
-    border: 1px solid #ccc;
+    border: none; 
 }
 
 .producto h3 {
@@ -87,22 +111,28 @@ nav ul {
     width: 100%;
     padding: 0.5rem;
     background-color: #eee;
-    border: 1px solid #999;
+    border: 1px solid #000;
     cursor: pointer;
 }
 
+/* --- Estilos del pie de página --- */
 footer {
     text-align: center;
     padding: 1rem;
-    border-top: 1px solid #ccc;
-    background-color: #0000FF; /* Color azul */
-    color: white;
+    border-top: 1px solid #000; 
+    background-color: transparent;
 }
 
-/* Media Query para escritorio (desktop) */
+footer p {
+    color: #0000FF; 
+}
+
+/* --- Media Query para escritorio --- */
 @media (min-width: 480px) {
+   
     .hero {
-        padding: 6rem 2rem;
+        display: block;
+        padding: 6rem 2rem; 
     }
 
     /* Ocultar menú hamburguesa */
@@ -113,7 +143,23 @@ footer {
     /* Mostrar menú de navegación */
     nav ul {
         display: flex;
+        position: static;
+        flex-direction: row;
         gap: 2rem;
+        background: transparent;
+        border: none;
+        width: auto;
+        padding: 0;
+    }
+
+    /* En escritorio, el logo "MANACO" vuelve a ser negro. */
+    .logo {
+        color: #000;
+    }
+    
+    /* En escritorio, el texto del copyright vuelve a ser negro. */
+    footer p {
+        color: #000;
     }
 
     .productos-grid {
@@ -123,15 +169,10 @@ footer {
     }
 
     .producto {
-        width: 300px; /* Ancho fijo para 3 productos por fila */
+        width: 300px;
     }
 
     .producto img {
         height: 300px;
-    }
-
-    /* Ocultar el banner principal en vista de escritorio */
-    .hero {
-        display: none;
     }
 }
